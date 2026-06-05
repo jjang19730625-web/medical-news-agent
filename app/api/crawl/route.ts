@@ -23,7 +23,8 @@ const SOURCE_MAP: Record<string, () => Promise<CrawledArticle[]>> = {
   Reuters: crawlReuters,
 }
 
-function getDb() {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function getDb(): any {
   return createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
@@ -113,7 +114,8 @@ async function runSourceCrawl(source: string) {
   })
 }
 
-async function saveArticles(db: ReturnType<typeof createClient>, articles: CrawledArticle[]) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+async function saveArticles(db: any, articles: CrawledArticle[]) {
   let saved = 0
 
   for (const article of articles.slice(0, 15)) {
