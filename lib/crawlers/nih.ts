@@ -2,9 +2,10 @@ import { parseRSS } from './rss'
 
 export const SOURCE = 'NIH'
 
+// NIH blocks direct RSS — use Google News search targeting nih.gov + NCBI
 const FEEDS = [
-  'https://www.nih.gov/news-events/news-releases.xml',
-  'https://www.niaid.nih.gov/news-events/news-releases/feed',
+  'https://news.google.com/rss/search?q=site:nih.gov+research+health&hl=en-US&gl=US&ceid=US:en',
+  'https://news.google.com/rss/search?q=NIH+clinical+trial+study+result&hl=en-US&gl=US&ceid=US:en',
 ]
 
 export async function crawl() {

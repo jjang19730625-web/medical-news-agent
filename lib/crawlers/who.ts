@@ -2,9 +2,10 @@ import { parseRSS } from './rss'
 
 export const SOURCE = 'WHO'
 
+// WHO blocks direct RSS scraping — use Google News search targeting who.int
 const FEEDS = [
-  'https://www.who.int/feeds/entity/mediacentre/news/en/rss.xml',
-  'https://www.who.int/feeds/entity/csr/don/en/rss.xml',
+  'https://news.google.com/rss/search?q=site:who.int+disease+outbreak&hl=en-US&gl=US&ceid=US:en',
+  'https://news.google.com/rss/search?q=WHO+disease+health+emergency&hl=en-US&gl=US&ceid=US:en',
 ]
 
 export async function crawl() {
