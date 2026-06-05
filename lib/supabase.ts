@@ -1,9 +1,11 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+export function getSupabase() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  )
+}
 
 export type Article = {
   id: string
@@ -30,8 +32,8 @@ export type CrawlLog = {
 }
 
 export const SOURCE_META: Record<string, { color: string; badge: string; icon: string }> = {
-  WHO:           { color: '#3b82f6', badge: 'bg-blue-900 text-blue-300 border-blue-700',    icon: '🌍' },
-  CDC:           { color: '#ef4444', badge: 'bg-red-900 text-red-300 border-red-700',       icon: '🏛️' },
+  WHO:           { color: '#3b82f6', badge: 'bg-blue-900 text-blue-300 border-blue-700',       icon: '🌍' },
+  CDC:           { color: '#ef4444', badge: 'bg-red-900 text-red-300 border-red-700',          icon: '🏛️' },
   NIH:           { color: '#6366f1', badge: 'bg-indigo-900 text-indigo-300 border-indigo-700', icon: '🔬' },
   PubMed:        { color: '#10b981', badge: 'bg-emerald-900 text-emerald-300 border-emerald-700', icon: '📄' },
   MedicalXpress: { color: '#f97316', badge: 'bg-orange-900 text-orange-300 border-orange-700', icon: '📰' },

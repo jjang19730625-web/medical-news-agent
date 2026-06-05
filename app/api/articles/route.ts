@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { supabase } from '@/lib/supabase'
+import { getSupabase } from '@/lib/supabase'
 
 export const runtime = 'nodejs'
 
@@ -10,7 +10,9 @@ export async function GET(req: NextRequest) {
   const limit = Math.min(parseInt(searchParams.get('limit') || '24'), 100)
   const offset = parseInt(searchParams.get('offset') || '0')
 
-  let query = supabase
+  const db = getSupabase()
+
+  let query = db
     .from('articles')
     .select('*', { count: 'exact' })
     .order('published_at', { ascending: false, nullsFirst: false })
